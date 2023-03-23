@@ -1,161 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'blog/base.html' %}
 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=10.0">
-<title>Ernő Rubik</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% for post in posts %}
+<div class="post">
+    <div class="date">{{ post.published_date }}</div>
+    <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
 
-<style>
-        .fa:hover {
-            opacity: 0.7;
-        }
-        .fa-facebook {
-            background: #3B5998;
-            color: white;
-        }
-        .fa-twitter {
-            background: #55ACEE;
-            color: white;
-        }        
-        .fa-youtube {
-            background: #bb0000;
-            color: white;
-        } 
-        .fa-instagram {
-            background: #125688;
-            color: white;
-        }
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-/* Style the header */
-header {
-  background-color: #FFFFFF;
-  padding: 5px;
-  text-align: center;
-  font-size: 35px;
-  color: black;
-}
-/* Create two columns/boxes that floats next to each other */
-nav {
-  float: left;
-  width: 18%;
-  height: 600px; /* only for demonstration, should be removed */
-  background: #FF8B00;
-  padding: 20px;
-}
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-article {
-  float: left;
-  padding: 35px;
-  width: 82%;
-  background-color: #0078FF;
-  height: 600px; /* only for demonstration, should be removed */
-}
-/* Clear floats after the columns */
-section::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* Style the footer */
-footer {
-  background-color: #E8FF00;
-  padding: 3px;
-  color: black;
-}
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-  nav, article {
-    width: 100%;
-    height: auto;
-  }
-}
-.beatlesimg {
-  border: 3px solid #555;
-  border-radius: 20%;
-}
-/* Create equal columns that sits next to each other */
-.column {
-    flex: 33.33%;
-    padding: 8px;
-}
-</style>
-</head>
-<body>
+    <p>{{ post.text|linebreaksbr }}</p>
+</div>
+{% endfor %}
 
-<header>
-  <h1>Ernő Rubik</h1>
-</header>
-
-<section>
-  <nav>
-    <ul>
-      <li><a href="">Concepto y desarrollo</a></li>
-      <li><a href="">Competencias</a></li>
-      <li><a href="">Más Cubos</a></li>
-    </ul>
-  </nav>
-  
-  <article>
-    <img class="w3-left w3-margin-left" src="https://images.pagina12.com.ar/styles/focal_content_1200x1050/public/2021-02/138696-erno-rubikweb1.jpg?itok=D0y-4GMc" alt="The Beatles" style="width:18%; border: 10px; border-radius: 10%;">
-    <p>Es un escultor, arquitecto y diseñador de la Escuela de Artes 
-        Comerciales de Budapest, autor del cubo de Rubik "aunque no 
-        es el único rompecabezas mecánico que lleva su nombre". También 
-        se destacan el Rubik's clock (del cual no fue inventor, solo se 
-        convirtió en el propietario de la patente al comprarla) y Rubik's Magic.</p>
-
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-        <p>&nbsp;</p>
-
-    <h2 align="center">Cubo de Rubik</h2>    
-    <p>El Cubo de Rubik es un rompecabezas mecánico inventado en 1974. 
-        El cubo de plástico tiene cuatro versiones distintas: una de 
-        2×2×2 (denominado "Cubo de bolsillo"); la estándar, de 3×3×3; 
-        la de 4×4×4 (también llamado "La venganza de Rubik"), y otra 
-        de 5×5×5 (conocido como el "Cubo del Profesor"). Asimismo se 
-        han desarrollado otras versiones de 6×6×6 7x7x7 y 8×8×8. 
-        Desde el año 2010 están comercializados igualmente los cubos 
-        de 9x9x9, 10x10x10, 11x11x11, 12x12x12, 13x13x13, 15x15x15 y 
-        hasta 19x19x19 (producidos en masa).</p>
-    <p>Su inventor lo bautizó originalmente como el Cubo Mágico. Fue 
-        en mayo de 1980, año de su comercialización a nivel mundial, 
-        cuando se le rebautizó como Cubo de Rubik. Se ha dicho de él 
-        que es el juguete mejor vendido del mundo entero, con alrededor 
-        de 350 millones de cubos de Rubik vendidos hasta 2009.</p>   
-    
-    <p>&nbsp;</p>
-
-  </article>
-</section>
-
-<footer>
-        <h5 align="center"> &#169; 2023 ALL RIGHTS RESERVED</h5>
-        <div class="w3-center w3-margin-bottom">
-            <a href="" class="fa fa-facebook" style="position: right;"></a>
-            <a href="" class="fa fa-twitter" style="position: right;"></a>
-            <a href="" class="fa fa-youtube"></a>
-            <a href="" class="fa fa-instagram"></a>
+<html>
+    <head>
+        <title>DAW blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="/">DAW Blog</a></h1>
         </div>
-</footer>
-</body>
-</html>
 
+        <div>
+            <p>published: 21.05.2017, 08:58</p>
+            <h2><a href="">My first post</a></h2>
+            <p>
+                Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi
+                porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus.
+            </p>
+        </div>
+
+        <div>
+            <p>published: 21.05.2017, 08:59</p>
+            <h2><a href="">My second post</a></h2>
+            <p>
+                Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi
+                porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                f.
+            </p>
+        </div>
+    </body>
+</html>
